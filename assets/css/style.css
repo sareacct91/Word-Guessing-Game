@@ -1,0 +1,56 @@
+:root {
+  --color-bg-page: black;
+  --color-bg-card: #a7a6a6;
+  --color-bg-button: blue;
+  --color-font-button: white;
+}
+
+
+body {
+  background-color: var(--color-bg-page);
+}
+h1 {
+  padding-top: 5%;
+  font-size: 2rem;
+}
+
+/* basic class */
+.row {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.hide {
+  display: none;
+}
+
+.align-center {
+  align-items: center;
+}
+
+/* class selector */
+
+.wrapper {
+  background-color: var(--color-bg-card);
+  border-radius: 20px;
+  width: 90%;
+  height: 45vh;
+  margin: 10% auto;
+}
+
+#card2 {
+  width: 70%;
+  height: 30vh;
+}
+
+.button {
+  background-color: var(--color-bg-button);
+  color: var(--color-font-button);
+}
+
+#startBtn {
+  height: 200px;
+  width: 200px;
+}
