@@ -6,6 +6,7 @@ gameStart
     const word = randomWord() -> string
 
   display that word as _ _ _ _ _
+    make a ul and append li with dataset of show and hidden
 
   start the countdown from 10seconds
     totalTime = 10;
