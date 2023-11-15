@@ -1,0 +1,15 @@
+/* basic class */
+.row {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.hide {
+  display: none;
+}
+
+.align-center {
+  align-items: center;
+}
