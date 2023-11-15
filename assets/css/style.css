@@ -5,29 +5,12 @@
   --color-font-button: white;
 }
 
-
 body {
   background-color: var(--color-bg-page);
 }
 h1 {
   padding-top: 5%;
   font-size: 2rem;
-}
-
-/* basic class */
-.row {
-  display: flex;
-}
-.column {
-  display: flex;
-  flex-direction: column;
-}
-.hide {
-  display: none;
-}
-
-.align-center {
-  align-items: center;
 }
 
 /* class selector */
@@ -37,7 +20,7 @@ h1 {
   border-radius: 20px;
   width: 90%;
   height: 45vh;
-  margin: 10% auto;
+  margin: min(5%, 50px) auto;
 }
 
 #card2 {
