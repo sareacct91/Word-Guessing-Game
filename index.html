@@ -9,13 +9,21 @@
   <title>Word Guessing Game</title>
 </head>
 <body>
-  <div id="card1" class="wrapper column align-center">
-    <h1>Word Guessing</h1>
-    <button id="startBtn" class="button">Start Game</button>
-    <div id="wordDisplay" class="row"></div>
+  <main class="column align-center just-between">
+    <div id="card1" class="wrapper column align-center">
+      <h1>Word Guessing</h1>
+      <div id="wordDisplay" class="row"></div>
+      <div id="timeDisplay"></div>
 
-  </div>
-  <div id="card2" class="wrapper column hide"></div>
+      <button id="startBtn" class="button">Start Game</button>
+    </div>
+    <div id="card2" class="wrapper column align-center">
+      <h2 id="resultDisplay"></h2>
+      <h2 >Wins: <span id="winDisplay"></span> </h2>
+      <h2 >Lose: <span id="loseDisplay"></span> </h2>
+    </div>
+  </main>
+
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

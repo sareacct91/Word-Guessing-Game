@@ -8,7 +8,12 @@
 body {
   background-color: var(--color-bg-page);
 }
-h1 {
+main {
+  padding-top: 5%;
+  height: 95vh;
+}
+h1,
+h2 {
   padding-top: 5%;
   font-size: 2rem;
 }
@@ -20,7 +25,6 @@ h1 {
   border-radius: 20px;
   width: 90%;
   height: 45vh;
-  margin: min(5%, 50px) auto;
 }
 
 #card2 {
