@@ -1,6 +1,7 @@
 // querySelectors
 const startBtn = document.querySelector("#startBtn");
 const wordDisplay = document.querySelector("#wordDisplay");
+const correctWord = document.querySelector("#correctWord");
 const timeDisplay = document.querySelector("#timeDisplay");
 const resultDisplay = document.querySelector("#resultDisplay");
 const winDisplay = document.querySelector("#winDisplay");
@@ -27,14 +28,21 @@ function displayScore() {
 }
 displayScore();
 
+function displayCorrectWord() {
+  console.log('correct');
+  divArr.forEach(element => {
+    correctWord.textContent += element.dataset.char;
+  });
+}
+
 // End the game, isWin = true when the function is called from the eventListener
 function endGame(isWin = false) {
   // Set game state to false and stop the timer
   isStart = false;
   clearInterval(intervalId);
 
-  // if you win, show winning text and win++, else show losing text and lose++
-  isWin ? (resultDisplay.textContent = "You Win", score.win++) : (resultDisplay.textContent = "You Lose", score.lose++);
+  // if you win, show winning text and win++, else show losing text, correct word and lose++
+  isWin ? (resultDisplay.textContent = "You Win", score.win++) : (resultDisplay.textContent = "You Lose", displayCorrectWord(), score.lose++);
   localStorage.setItem("score", JSON.stringify(score));
 
   // Display the new score
@@ -82,6 +90,7 @@ startBtn.addEventListener('click', () => {
   // Reset the game
   resultDisplay.textContent = '';
   wordDisplay.innerHTML = '';
+  correctWord.textContent = '';
   divArr = [];
 
   // Start the game
