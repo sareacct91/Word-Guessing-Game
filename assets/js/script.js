@@ -1,3 +1,4 @@
+// querySelectors
 const startBtn = document.querySelector("#startBtn");
 const wordDisplay = document.querySelector("#wordDisplay");
 const timeDisplay = document.querySelector("#timeDisplay");
@@ -5,6 +6,7 @@ const resultDisplay = document.querySelector("#resultDisplay");
 const winDisplay = document.querySelector("#winDisplay");
 const loseDisplay = document.querySelector("#loseDisplay");
 
+// Global variables
 let wordsArr, divArr = [];
 let score = JSON.parse(localStorage.getItem("score")) || {win: 0, lose: 0};
 let intervalId;
