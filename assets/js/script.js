@@ -28,21 +28,25 @@ function displayScore() {
 }
 displayScore();
 
-function displayCorrectWord() {
-  console.log('correct');
-  divArr.forEach(element => {
-    correctWord.textContent += element.dataset.char;
-  });
-}
-
 // End the game, isWin = true when the function is called from the eventListener
 function endGame(isWin = false) {
   // Set game state to false and stop the timer
   isStart = false;
   clearInterval(intervalId);
 
-  // if you win, show winning text and win++, else show losing text, correct word and lose++
-  isWin ? (resultDisplay.textContent = "You Win", score.win++) : (resultDisplay.textContent = "You Lose", displayCorrectWord(), score.lose++);
+  // if you win, show winning text and win++, 
+  if (isWin) {
+    resultDisplay.textContent = "You Win";
+    score.win++;
+    
+  // Else show losing text, correct word and lose++
+  } else {
+    resultDisplay.textContent = "You Lose";
+    divArr.forEach(element => correctWord.textContent += element.dataset.char);
+    score.lose++;
+  }
+
+  // Save the score to localStorage
   localStorage.setItem("score", JSON.stringify(score));
 
   // Display the new score
@@ -74,9 +78,8 @@ function startGame() {
   // display div elements on the page
   divArr.forEach(element => wordDisplay.appendChild(element));
 
-  // Start the timer, end game if time is 0
   let totalTime = 10;
-
+  // Start the timer, end game if time is 0
   intervalId = setInterval(function time() {
     return totalTime === 0 ? (timeDisplay.textContent = `0 second`, endGame()) : (timeDisplay.textContent = `${totalTime--} seconds`, time);
   }(),1000);
