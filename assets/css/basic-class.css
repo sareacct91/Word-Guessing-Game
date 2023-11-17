@@ -17,3 +17,15 @@
 .just-between {
   justify-content: space-between;
 }
+
+.self-just-end {
+  justify-self: flex-end;
+}
+
+.just-center {
+  justify-content: center;
+}
+
+.place-center {
+  place-items: center;
+}

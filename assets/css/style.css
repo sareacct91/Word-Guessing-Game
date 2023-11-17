@@ -8,23 +8,24 @@
 body {
   background-color: var(--color-bg-page);
 }
+
 main {
   padding-top: 5%;
   height: 95vh;
   gap: 2%;
 }
+
 h1,
 h2 {
   font-size: 2rem;
 }
 
 /* class selector */
-.wrapper {
-  position: relative;
+.container {
+  display: grid;
   background-color: var(--color-bg-card);
   border-radius: 20px;
   width: 90%;
-  height: 30vh;
 }
 
 .textDisplay {
@@ -37,24 +38,32 @@ h2 {
 }
 
 #card0 {
+  width: auto;
   height: auto;
+  padding: 1rem;
+}
+
+#card1 {
+  grid-template-rows: 90px 123px 90px 105px;
+}
+#card1 > div {
+  
 }
 
 #card2 {
-  width: 70%;
-  height: 30vh;
+  gap: 0.5rem;
+  padding: 2rem;
+  width: auto;
 }
 
 .button {
   background-color: var(--color-bg-button);
   color: var(--color-font-button);
-  position: absolute;
-  bottom: 0;
   height: 50px;
   width: 100px;
 }
 
 #wordDisplay {
   padding: 1% 0;
-  font-size: 2rem;
+  font-size: 3rem;
 }
