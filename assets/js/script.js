@@ -51,15 +51,19 @@ function endGame(isWin = false) {
   // Display the new score
   displayScore();
 
-  // Show the play button again
-  startBtn.textContent = "Play again";
-  startBtn.classList.remove("hide");
+  // Play again
+  document.querySelector("#playAgain").textContent = "Press Enter to play again!";
 }
 
 // Start the gameas
 function startGame() {
   // Set game state to true
   isStart = true;
+
+  // Reset the game
+  resultDisplay.textContent = '';
+  wordDisplay.innerHTML = '';
+  divArr = [];
 
   // Return random word from the words array
   const word = wordsArr[Math.floor(Math.random() * wordsArr.length)];
@@ -89,32 +93,30 @@ startBtn.addEventListener('click', () => {
   // Hide the start button 
   startBtn.classList.add("hide");
 
-  // Reset the game
-  resultDisplay.textContent = '';
-  wordDisplay.innerHTML = '';
-  divArr = [];
-
   // Start the game
   startGame();
 });
 
 // Check for keypress, 
 document.addEventListener('keydown', (event) => {
-  if (!isStart) {return}
+  if (isStart) {
+    // correctArr =  filter out elements from divArr that have the correct character
+    let correctArr = divArr.filter(element => event.key.toLowerCase() === element.dataset.char.toLowerCase());
 
-  // correctArr =  filter out elements from divArr that have the correct character
-  let correctArr = divArr.filter(element => event.key.toLowerCase() === element.dataset.char.toLowerCase());
+    // If correctArr have elements in it, set the textContent of those elements to the correct key
+    if (correctArr.length !== 0) {
+      correctArr.forEach(element => element.textContent = element.dataset.char);
+    }
 
-  // If correctArr have elements in it, set the textContent of those elements to the correct key
-  if (correctArr.length !== 0) {
-    correctArr.forEach(element => element.textContent = element.dataset.char);
-  }
+    // If there's no more element that's "hidden", end game
+    if (!divArr.some(element => element.textContent === "_")) {
+      endGame(true); 
+    }
 
-  // If there's no more element that's "hidden", end game
-  if (!divArr.some(element => element.textContent === "_")) {
-    console.log('finish');
-    endGame(true); 
-  }
+  } else if (event.key === "Enter") {
+    // Start the game
+    startGame();
+  }  
 });
 
 // Reset the score in localStorage and on the page
