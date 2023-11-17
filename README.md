@@ -1,4 +1,4 @@
-# Word-Guessing-Game
+# Word Guessing Game
 
 ## Deployed Application
 
@@ -6,4 +6,4 @@ Click [here](https://sareacct91.github.io/Word-Guessing-Game/) for Deployed Appl
 
 ## Features
 
-Badly written CSS
+Badly written CSS, update at a later time
