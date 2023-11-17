@@ -19,7 +19,6 @@ h2 {
 }
 
 /* class selector */
-
 .wrapper {
   position: relative;
   background-color: var(--color-bg-card);

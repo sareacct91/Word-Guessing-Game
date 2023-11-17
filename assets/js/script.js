@@ -95,3 +95,9 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
+
+document.querySelector("#resetBtn").addEventListener("click", () => {
+  localStorage.clear();
+  winDisplay.textContent = "0";
+  loseDisplay.textContent = "0";
+});
