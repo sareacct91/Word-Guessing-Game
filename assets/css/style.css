@@ -20,6 +20,38 @@ h2 {
   font-size: 2rem;
 }
 
+/* basic class */
+.row {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.hide {
+  display: none;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.just-between {
+  justify-content: space-between;
+}
+
+.self-just-end {
+  justify-self: flex-end;
+}
+
+.just-center {
+  justify-content: center;
+}
+
+.place-center {
+  place-items: center;
+}
+
 /* class selector */
 .container {
   display: grid;
@@ -64,4 +96,10 @@ h2 {
 #wordDisplay {
   padding: 1% 0;
   font-size: 3rem;
+}
+
+@media screen and (min-width: 1000px) {
+  main {
+    flex-direction: row;
+  }
 }
