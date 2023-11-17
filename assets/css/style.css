@@ -52,6 +52,9 @@ h2 {
   place-items: center;
 }
 
+.text-center {
+  text-align: center;
+}
 /* class selector */
 .container {
   display: grid;
@@ -62,6 +65,8 @@ h2 {
 
 .textDisplay {
   font-size: 2rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #wordDisplay {
@@ -96,4 +101,11 @@ h2 {
 #wordDisplay {
   padding: 1% 0;
   font-size: 3rem;
+}
+
+@media screen and (max-width: 700px) {
+   #wordDisplay > * {
+    padding: 1% 0;
+    font-size: 2rem;
+  }
 }

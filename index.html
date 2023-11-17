@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/reset.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Word Guessing Game</title>
-</head>
-<body>
-  <main class="column align-center">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Word Guessing Game</title>
+  </head>
+  <body>
+    <main class="column align-center">
+      <div id="card0" class="container place-center">
+        <h1>Word Guessing Game</h1>
+        <h3>relating to JavaScript</h3>
+      </div>
 
-    <div id="card0" class="container place-center">
-      <h1>Word Guessing Game</h1>
-      <h3>relating to JavaScript</h3>
-    </div>
+      <div id="card1" class="container place-center">
+        <div class="textDisplay">
+          You have <span id="timeDisplay">10 seconds</span>
+        </div>
+        <div id="wordDisplay" class="textDisplay row"></div>
+        <div id="resultDisplay" class="textDisplay"></div>
+        <button id="startBtn" class="button">Start Game</button>
+        <div id="playAgain" class="textDisplay"></div>
+      </div>
 
-    <div id="card1" class="container place-center">
-      <div class="textDisplay">You have <span id="timeDisplay">10 seconds</span></div>
+      <div id="card2" class="container place-center">
+        <h2>Wins: <span id="winDisplay"></span></h2>
+        <h2>Lose: <span id="loseDisplay"></span></h2>
+        <button id="resetBtn" class="button">Reset Score</button>
+      </div>
+    </main>
 
-      <div id="wordDisplay" class="textDisplay row"></div>
-
-      <div id="resultDisplay" class="textDisplay"></div>
-
-      <button id="startBtn" class="button">Start Game</button>
-      <div id="playAgain" class="textDisplay"></div>
-    </div>
-
-    <div id="card2" class="container place-center">
-      <h2 >Wins: <span id="winDisplay"></span> </h2>
-      <h2 >Lose: <span id="loseDisplay"></span> </h2>
-
-      <button id="resetBtn" class="button">Reset Score</button>
-    </div>
-  </main>
-
-  <script src="./assets/js/script.js"></script>
-</body>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
