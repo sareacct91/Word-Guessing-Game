@@ -12,7 +12,7 @@ let isStart = false;
 
 // Get words list from words.json file
 async function fetchWordsArr() {
-  const response = await fetch("./assets/words.JSON");
+  const response = await fetch("./assets/data/words.JSON");
   wordsArr = await response.json();
   console.log(wordsArr);
 }
