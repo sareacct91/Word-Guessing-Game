@@ -51,6 +51,7 @@ h2 {
   gap: 0.5rem;
   padding: 2rem;
   min-width: 240px;
+  width: auto;
 }
 
 .button {
