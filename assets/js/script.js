@@ -78,7 +78,7 @@ function startGame() {
   let totalTime = 10;
 
   intervalId = setInterval(function time() {
-    return totalTime === 0 ? (timeDisplay.textContent = totalTime, endGame()) : (timeDisplay.textContent = totalTime--, time);
+    return totalTime === 0 ? (timeDisplay.textContent = `0 second`, endGame()) : (timeDisplay.textContent = `${totalTime--} seconds`, time);
   }(),1000);
 }
 
