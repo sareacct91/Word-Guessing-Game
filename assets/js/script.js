@@ -1,7 +1,6 @@
 // querySelectors
 const startBtn = document.querySelector("#startBtn");
 const wordDisplay = document.querySelector("#wordDisplay");
-const correctWord = document.querySelector("#correctWord");
 const timeDisplay = document.querySelector("#timeDisplay");
 const resultDisplay = document.querySelector("#resultDisplay");
 const winDisplay = document.querySelector("#winDisplay");
@@ -41,8 +40,8 @@ function endGame(isWin = false) {
     
   // Else show losing text, correct word and lose++
   } else {
-    resultDisplay.textContent = "You Lose";
-    divArr.forEach(element => correctWord.textContent += element.dataset.char);
+    resultDisplay.textContent = "GameOver. The correct word is: ";
+    divArr.forEach(element => resultDisplay.textContent += element.dataset.char);
     score.lose++;
   }
 
@@ -71,7 +70,7 @@ function startGame() {
     const divEl = document.createElement("div");
 
     divEl.dataset.char = word[i];
-    divEl.textContent = "_";
+    word[i] === " " ? divEl.style.paddingRight = "15px" : divEl.textContent = "_";
 
     divArr.push(divEl);
   }
@@ -93,7 +92,6 @@ startBtn.addEventListener('click', () => {
   // Reset the game
   resultDisplay.textContent = '';
   wordDisplay.innerHTML = '';
-  correctWord.textContent = '';
   divArr = [];
 
   // Start the game
