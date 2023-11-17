@@ -21,6 +21,7 @@ h2 {
 /* class selector */
 
 .wrapper {
+  position: relative;
   background-color: var(--color-bg-card);
   border-radius: 20px;
   width: 90%;
@@ -38,6 +39,13 @@ h2 {
 }
 
 #startBtn {
+  position: absolute;
+  bottom: 0;
   height: 200px;
   width: 200px;
+}
+
+#wordDisplay {
+  padding: 1% 0;
+  font-size: 2rem;
 }
