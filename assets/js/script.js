@@ -11,11 +11,13 @@ let wordsArr, divArr = [];
 let score = JSON.parse(localStorage.getItem("score")) || {win: 0, lose: 0};
 let intervalId;
 let isStart = false;
+let totalTime = 5;
 
 // fetch words list from words.json file
 async function fetchWordsArr() {
   const response = await fetch("./assets/data/words.JSON");
   wordsArr = await response.json();
+  // wordsArr = wordsArr.concat(wordsArr);
   console.log(wordsArr);
 }
 fetchWordsArr();
@@ -81,7 +83,6 @@ function startGame() {
   // display div elements on the page
   divArr.forEach(element => wordDisplay.appendChild(element));
 
-  let totalTime = 10;
   // Start the timer, end game if time is 0
   intervalId = setInterval(function time() {
     return totalTime === 0 ? (timeDisplay.textContent = `0 second`, endGame()) : (timeDisplay.textContent = `${totalTime--} seconds`, time);
@@ -124,4 +125,10 @@ document.querySelector("#resetBtn").addEventListener("click", () => {
   localStorage.clear();
   winDisplay.textContent = "0";
   loseDisplay.textContent = "0";
+});
+
+// User select total time
+document.querySelector("#selectTime").addEventListener("change", () => {
+  totalTime = document.querySelector("#selectTime").value;
+  timeDisplay.textContent = `${totalTime} seconds`;
 });
