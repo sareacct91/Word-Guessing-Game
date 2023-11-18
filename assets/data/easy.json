@@ -17,11 +17,10 @@
   {"word" : "Falsy", "show" : "_____", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"},
   {"word" : "Scope", "show" : "_____", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Scope"},
   {"word" : "Global Scope", "show" : "______ _____", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Global_scope"},
-
   {"word" : "IIFE", "show" : "____", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/IIFE"},
   {"word" : "Promise", "show" : "_______", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"},
   {"word" : "Async Function", "show" : "_____ ________", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"},
-  { "word" : "Destructuring", "show" : "_____________", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"},
+  {"word" : "Destructuring", "show" : "_____________", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"},
   {"word" : "Hoisting", "show" : "________", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"},
   {"word" : "Callback Hell", "show" : "________ ____", "link" : "http://callbackhell.com/"},
   {"word" : "Local Scope", "show" : "_____ _____", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Local_scope"}
