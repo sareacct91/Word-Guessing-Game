@@ -97,10 +97,6 @@ select {
   grid-area: select;
 }
 
-.selectDif {
-  justify-self: end;
-}
-
 .result {
   grid-area: result;
   gap: 0.5rem;
