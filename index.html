@@ -8,13 +8,13 @@
     <title>Word Guessing Game</title>
   </head>
   <body>
-    <main class="column align-center">
-      <div id="card0" class="container place-center">
-        <h1>Word Guessing Game</h1>
-        <h3>relating to JavaScript</h3>
-      </div>
+    <header>
+      <h1>Word Guessing Game</h1>
+      <h3>relating to JavaScript</h3>
+    </header>
 
-      <div id="card1" class="container place-center">
+    <main class="grid-container">
+      <div class="main container place-center">
         <div class="textDisplay">
           You have <span id="timeDisplay">10 seconds</span>
         </div>
@@ -24,7 +24,25 @@
         <div id="playAgain" class="textDisplay"></div>
       </div>
 
-      <div id="card2" class="container place-center">
+      <div class="selections container place-center">
+        <label for="selectDif" class="self-align-end">Choose the difficulty</label>
+        <select name="selectDif" id="selectDif" class="self-align-start">
+          <option value="easy">easy</option>
+          <option value="hard">hard</option>
+          <option value="veryHard">veryHard</option>
+          <option value="expert">expert</option>
+        </select>
+
+        <label for="selectTime" class="self-align-end">How much time</label>
+        <select name="selectTime" id="selectTime" class="self-align-start">
+          <option value="five">5 seconds</option>
+          <option value="ten">10 seconds</option>
+          <option value="tenFive">15 seconds</option>
+          <option value="two0">20 seconds</option>
+        </select>
+      </div>
+
+      <div class="result container place-center">
         <h2>Wins: <span id="winDisplay"></span></h2>
         <h2>Lose: <span id="loseDisplay"></span></h2>
         <button id="resetBtn" class="button">Reset Score</button>
