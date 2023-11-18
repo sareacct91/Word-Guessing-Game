@@ -7,12 +7,16 @@
 
 body {
   background-color: var(--color-bg-page);
+  min-height: 100svh;
 }
 
-main {
-  padding-top: 5%;
-  height: 900px;
-  gap: 2%;
+header {
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+}
+header > * {
+  color: var(--color-font-button);
+  text-align: center;
 }
 
 h1,
@@ -21,46 +25,36 @@ h2 {
 }
 
 /* basic class */
-.row {
-  display: flex;
-}
-.column {
-  display: flex;
-  flex-direction: column;
-}
 .hide {
   display: none;
-}
-
-.align-center {
-  align-items: center;
-}
-
-.just-between {
-  justify-content: space-between;
-}
-
-.self-just-end {
-  justify-self: flex-end;
-}
-
-.just-center {
-  justify-content: center;
 }
 
 .place-center {
   place-items: center;
 }
 
-.text-center {
-  text-align: center;
+.row {
+  display: flex;
 }
+
 /* class selector */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "select"
+    "main"
+    "result";
+  gap: 1rem;
+  width: min(90%, 1300px);
+  margin-inline: auto;
+}
+
 .container {
   display: grid;
   background-color: var(--color-bg-card);
   border-radius: 20px;
-  width: min(90%, 1000px)
+  border: 1px solid red;
 }
 
 .textDisplay {
@@ -72,23 +66,23 @@ h2 {
 #wordDisplay {
   padding-top: 5%;
   gap:.5rem;
+  padding: 1% 0;
+  font-size: 3rem;
 }
 
-#card0 {
-  width: auto;
-  height: auto;
-  padding: 1rem;
-}
-
-#card1 {
+.main {
+  grid-area: main;
   grid-template-rows: 90px 123px 90px 105px;
 }
 
-#card2 {
+.selections {
+  grid-area: select;
+}
+
+.result {
+  grid-area: result;
   gap: 0.5rem;
-  padding: 2rem;
   min-width: 240px;
-  width: auto;
 }
 
 .button {
@@ -98,14 +92,20 @@ h2 {
   width: 100px;
 }
 
-#wordDisplay {
-  padding: 1% 0;
-  font-size: 3rem;
+@media only screen and (min-width: 420px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "main main"
+      "select result";
+  }
 }
 
-@media screen and (max-width: 700px) {
-   #wordDisplay > * {
-    padding: 1% 0;
-    font-size: 2rem;
+@media only screen and (min-width: 900px) {
+  .grid-container {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+    "main select"
+    "main result";
   }
 }
