@@ -15,7 +15,7 @@ let totalTime = 5;
 
 // fetch words list from words.json file
 async function fetchWordsArr(urlPar) {
-  const response = await fetch(`"./assets/data/${urlPar}.json"`);
+  const response = await fetch(`./assets/data/${urlPar}.json`);
   wordObjArr = await response.json();
   // wordsArr = wordsArr.concat(wordsArr);
   console.log(wordObjArr);
