@@ -13,6 +13,13 @@ let intervalId, wordObj, totalTime;
 let isStart = false;
 let difficulty = "easy"
 
+
+function init() {
+  fetchWordsArr(difficulty, true);
+  displayScore();
+  getTime();
+}
+
 // fetch words list from words.json file
 async function fetchWordsArr(urlPar, isFirst = false) {
   const response = await fetch(`./assets/data/${urlPar}.json`);
@@ -23,21 +30,18 @@ async function fetchWordsArr(urlPar, isFirst = false) {
   // Start the game if not the first call
   isFirst ? null : startGame();
 }
-fetchWordsArr(difficulty, true);
 
 // Display score on screen
 function displayScore() {
   winDisplay.textContent = score.win;
   loseDisplay.textContent = score.lose;
 }
-displayScore();
 
 // get time from user selection
 function getTime() {
   totalTime = document.querySelector("#selectTime").value;
   timeDisplay.textContent = `${totalTime} seconds`;
 }
-getTime();
 
 // End the game, isWin = true when the function is called from the eventListener
 function endGame(isWin = false) {
@@ -149,3 +153,6 @@ document.querySelector("#resetBtn").addEventListener("click", () => {
 
 // User select total time
 document.querySelector("#selectTime").addEventListener("change", getTime);
+
+
+init();
