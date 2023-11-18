@@ -16,6 +16,12 @@
   {"word" : "Truthy", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Truthy"},
   {"word" : "Falsy", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"},
   {"word" : "Scope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Scope"},
-  {"word" : "GlobalScope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Global_scope"},
-  {"word" : "LocalScope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Local_scope"}
+  {"word" : "Global Scope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Global_scope"},
+  {"IIFE" : "https://developer.mozilla.org/en-US/docs/Glossary/IIFE"},
+  {"Promise" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"},
+  {"Async Function" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"},
+  { "Destructuring" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"},
+  {"Hoisting" : "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"},
+  {"Callback Hell" : "http://callbackhell.com/"},
+  {"word" : "Local Scope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Local_scope"}
 ]
