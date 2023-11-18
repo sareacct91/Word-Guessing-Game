@@ -7,20 +7,20 @@ const winDisplay = document.querySelector("#winDisplay");
 const loseDisplay = document.querySelector("#loseDisplay");
 
 // Global variables
-let wordsArr, divArr = [];
+let wordObjArr, divArr = [];
 let score = JSON.parse(localStorage.getItem("score")) || {win: 0, lose: 0};
-let intervalId;
+let intervalId, wordObj;
 let isStart = false;
 let totalTime = 5;
 
 // fetch words list from words.json file
-async function fetchWordsArr() {
-  const response = await fetch("./assets/data/words.JSON");
-  wordsArr = await response.json();
+async function fetchWordsArr(urlPar) {
+  const response = await fetch(urlPar);
+  wordObjArr = await response.json();
   // wordsArr = wordsArr.concat(wordsArr);
-  console.log(wordsArr);
+  console.log(wordObjArr);
 }
-fetchWordsArr();
+fetchWordsArr("./assets/data/easy.JSON");
 
 // Display score on screen
 function displayScore() {
@@ -28,6 +28,11 @@ function displayScore() {
   loseDisplay.textContent = score.lose;
 }
 displayScore();
+
+function getTime() {
+  totalTime = document.querySelector("#selectTime").value;
+  timeDisplay.textContent = `${totalTime} seconds`;
+}
 
 // End the game, isWin = true when the function is called from the eventListener
 function endGame(isWin = false) {
@@ -42,8 +47,8 @@ function endGame(isWin = false) {
     
   // Else show losing text, correct word and lose++
   } else {
-    resultDisplay.textContent = "GameOver. The correct word is: ";
-    divArr.forEach(element => resultDisplay.textContent += element.dataset.char);
+    resultDisplay.innerHTML = "GameOver. The correct word is: ";
+    resultDisplay.innerHTML += `<br><a href="${wordObj.link}" target="_Blank">${wordObj.word}`;
     score.lose++;
   }
 
@@ -68,7 +73,8 @@ function startGame() {
   divArr = [];
 
   // Return random word from the words array
-  const word = wordsArr[Math.floor(Math.random() * wordsArr.length)];
+  wordObj = wordObjArr[Math.floor(Math.random() * wordObjArr.length)];
+  const { word } = wordObj;
   console.log(word);
 
   // Add div elements equal to the length of the chosen word to divArr
@@ -84,6 +90,7 @@ function startGame() {
   divArr.forEach(element => wordDisplay.appendChild(element));
 
   // Start the timer, end game if time is 0
+  getTime();
   intervalId = setInterval(function time() {
     return totalTime === 0 ? (timeDisplay.textContent = `0 second`, endGame()) : (timeDisplay.textContent = `${totalTime--} seconds`, time);
   }(),1000);
@@ -114,7 +121,7 @@ document.addEventListener('keydown', (event) => {
       endGame(true); 
     }
 
-  } else if (event.key === "Enter") {
+  } else if (event.key === "Enter" && !isStart) {
     // Start the game
     startGame();
   }  
@@ -128,7 +135,4 @@ document.querySelector("#resetBtn").addEventListener("click", () => {
 });
 
 // User select total time
-document.querySelector("#selectTime").addEventListener("change", () => {
-  totalTime = document.querySelector("#selectTime").value;
-  timeDisplay.textContent = `${totalTime} seconds`;
-});
+document.querySelector("#selectTime").addEventListener("change", getTime);
