@@ -1,0 +1,21 @@
+[
+  {"word" : "JavaScript", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript"},
+  {"word" : "Variable", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations"},
+  {"word" : "Function", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"},
+  {"word" : "JavaScript", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" },
+  {"word" : "Object", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"},
+  {"word" : "Call stack", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Call_stack"},
+  {"word" : "Event", "link" : "https://developer.mozilla.org/en-US/docs/Web/API/Event"},
+  {"word" : "DOM", "link" : "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"},
+  {"word" : "JSON", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"},
+  {"word" : "Fetch", "link" : "https://developer.mozilla.org/en-US/docs/Web/API/fetch"},
+  {"word" : "Arrow Function", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions"},
+  {"word" : "Callback Function", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Callback_function"},
+  {"word" : "Console", "link" : "https://developer.mozilla.org/en-US/docs/Web/API/Window/console"},
+  {"word" : "Debugging", "link" : "https://www.w3schools.com/js/js_debugging.asp"},
+  {"word" : "Truthy", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Truthy"},
+  {"word" : "Falsy", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"},
+  {"word" : "Scope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Scope"},
+  {"word" : "GlobalScope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Global_scope"},
+  {"word" : "LocalScope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Local_scope"}
+]
