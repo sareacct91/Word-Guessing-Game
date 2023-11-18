@@ -37,6 +37,7 @@ function getTime() {
   totalTime = document.querySelector("#selectTime").value;
   timeDisplay.textContent = `${totalTime} seconds`;
 }
+getTime();
 
 // End the game, isWin = true when the function is called from the eventListener
 function endGame(isWin = false) {
@@ -73,7 +74,7 @@ function startGame() {
   isStart = true;
 
   // Reset the game
-  resultDisplay.textContent = '';
+  resultDisplay.innerHTML = '';
   wordDisplay.innerHTML = '';
   divArr = [];
 
@@ -121,6 +122,7 @@ startBtn.addEventListener('click', () => {
 
 // Check for keypress, 
 document.addEventListener('keydown', (event) => {
+  // If the game is running
   if (isStart) {
     // correctArr =  filter out elements from divArr that have the correct character
     let correctArr = divArr.filter(element => event.key.toLowerCase() === element.dataset.char.toLowerCase());
@@ -135,6 +137,7 @@ document.addEventListener('keydown', (event) => {
       endGame(true); 
     }
 
+  // If the game is over, press Enter to play again
   } else if (event.key === "Enter" && !isStart) {
     // Start the game
     startGame();
