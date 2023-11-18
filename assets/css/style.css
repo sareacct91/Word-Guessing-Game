@@ -24,7 +24,19 @@ h2 {
   font-size: 2rem;
 }
 
+select {
+  width: 110px;
+}
+
 /* basic class */
+.row {
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
 .hide {
   display: none;
 }
@@ -33,8 +45,15 @@ h2 {
   place-items: center;
 }
 
-.row {
-  display: flex;
+.text-center {
+  text-align: center;
+}
+
+.self-align-start {
+  align-self: self-start;
+}
+.self-align-end {
+  align-self: self-end;
 }
 
 /* class selector */
@@ -54,7 +73,6 @@ h2 {
   display: grid;
   background-color: var(--color-bg-card);
   border-radius: 20px;
-  border: 1px solid red;
 }
 
 .textDisplay {
@@ -77,6 +95,10 @@ h2 {
 
 .selections {
   grid-area: select;
+}
+
+.selectDif {
+  justify-self: end;
 }
 
 .result {
