@@ -9,18 +9,21 @@ const loseDisplay = document.querySelector("#loseDisplay");
 // Global variables
 let wordObjArr, divArr = [];
 let score = JSON.parse(localStorage.getItem("score")) || {win: 0, lose: 0};
-let intervalId, wordObj;
+let intervalId, wordObj, totalTime;
 let isStart = false;
-let totalTime = 5;
+let difficulty = "easy"
 
 // fetch words list from words.json file
-async function fetchWordsArr(urlPar) {
+async function fetchWordsArr(urlPar, isFirst = false) {
   const response = await fetch(`./assets/data/${urlPar}.json`);
   wordObjArr = await response.json();
   // wordsArr = wordsArr.concat(wordsArr);
   console.log(wordObjArr);
+
+  // Start the game if not the first call
+  isFirst ? null : startGame();
 }
-fetchWordsArr("easy");
+fetchWordsArr(difficulty, true);
 
 // Display score on screen
 function displayScore() {
@@ -29,6 +32,7 @@ function displayScore() {
 }
 displayScore();
 
+// get time from user selection
 function getTime() {
   totalTime = document.querySelector("#selectTime").value;
   timeDisplay.textContent = `${totalTime} seconds`;
@@ -48,9 +52,10 @@ function endGame(isWin = false) {
   // Else show losing text, correct word and lose++
   } else {
     resultDisplay.innerHTML = "GameOver. The correct word is: ";
-    resultDisplay.innerHTML += `<br><a href="${wordObj.link}" target="_Blank">${wordObj.word}`;
     score.lose++;
   }
+  // Display link to the documentation for the word
+  resultDisplay.innerHTML += `<br><a href="${wordObj.link}" target="_Blank">${wordObj.word}`;
 
   // Save the score to localStorage
   localStorage.setItem("score", JSON.stringify(score));
@@ -102,7 +107,16 @@ startBtn.addEventListener('click', () => {
   startBtn.classList.add("hide");
 
   // Start the game
-  startGame();
+  const userPick = document.querySelector("#selectDif").value
+  
+  // Fetch new words if user select different difficulty, else start the game 
+  if (difficulty !== userPick) {
+    difficulty = userPick;
+    fetchWordsArr(difficulty);
+  } else {
+    startGame();
+  }
+
 });
 
 // Check for keypress, 
