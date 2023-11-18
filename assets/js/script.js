@@ -124,13 +124,9 @@ startBtn.addEventListener('click', () => {
 document.addEventListener('keydown', (event) => {
   // If the game is running
   if (isStart) {
-    // correctArr =  filter out elements from divArr that have the correct character
-    let correctArr = divArr.filter(element => event.key.toLowerCase() === element.dataset.char.toLowerCase());
-
-    // If correctArr have elements in it, set the textContent of those elements to the correct key
-    if (correctArr.length !== 0) {
-      correctArr.forEach(element => element.textContent = element.dataset.char);
-    }
+    // Check if the key.event is equal to the character in the div array
+    // yes then set to the charcter
+    divArr.forEach(element => event.key.toLowerCase() === element.dataset.char.toLowerCase() ? element.textContent = element.dataset.char : null);
 
     // If there's no more element that's "hidden", end game
     if (!divArr.some(element => element.textContent === "_")) {
