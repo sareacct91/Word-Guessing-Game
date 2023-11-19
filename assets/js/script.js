@@ -1,17 +1,17 @@
 // querySelectors
 const startBtn = document.querySelector("#startBtn");
-const wordDisplay = document.querySelector("#wordDisplay");
-const timeDisplay = document.querySelector("#timeDisplay");
-const resultDisplay = document.querySelector("#resultDisplay");
-const winDisplay = document.querySelector("#winDisplay");
-const loseDisplay = document.querySelector("#loseDisplay");
+const wordDisplayEl = document.querySelector("#wordDisplay");
+const timeDisplayEl = document.querySelector("#timeDisplay");
+const resultDisplayEl = document.querySelector("#resultDisplay");
+const winDisplayEl = document.querySelector("#winDisplay");
+const loseDisplayEl = document.querySelector("#loseDisplay");
 
 // Global variables
-let wordObjArr, divArr = [];
+let wordObjArr = [];
 let score = JSON.parse(localStorage.getItem("score")) || {win: 0, lose: 0};
 let intervalId, wordObj, totalTime;
 let isStart = false;
-let difficulty = "easy"
+let difficulty = document.querySelector("#selectDif").value || "easy";
 
 
 function init() {
@@ -21,8 +21,8 @@ function init() {
 }
 
 // fetch words list from words.json file
-async function fetchWordsArr(urlPar, isFirst = false) {
-  const response = await fetch(`./assets/data/${urlPar}.json`);
+async function fetchWordsArr(str, isFirst = false) {
+  const response = await fetch(`./assets/data/${str}.json`);
   wordObjArr = await response.json();
   // wordsArr = wordsArr.concat(wordsArr);
   console.log(wordObjArr);
@@ -33,14 +33,14 @@ async function fetchWordsArr(urlPar, isFirst = false) {
 
 // Display score on screen
 function displayScore() {
-  winDisplay.textContent = score.win;
-  loseDisplay.textContent = score.lose;
+  winDisplayEl.textContent = score.win;
+  loseDisplayEl.textContent = score.lose;
 }
 
 // get time from user selection
 function getTime() {
   totalTime = document.querySelector("#selectTime").value;
-  timeDisplay.textContent = `${totalTime} seconds`;
+  timeDisplayEl.textContent = `${totalTime} seconds`;
 }
 
 // End the game, isWin = true when the function is called from the eventListener
@@ -51,16 +51,16 @@ function endGame(isWin = false) {
 
   // if you win, show winning text and win++, 
   if (isWin) {
-    resultDisplay.textContent = "You Win";
+    resultDisplayEl.textContent = "You Win";
     score.win++;
     
   // Else show losing text, correct word and lose++
   } else {
-    resultDisplay.innerHTML = "GameOver. The correct word is: ";
+    resultDisplayEl.innerHTML = "GameOver. The correct word is: ";
     score.lose++;
   }
   // Display link to the documentation for the word
-  resultDisplay.innerHTML += `<br><a href="${wordObj.link}" target="_Blank">${wordObj.word}`;
+  resultDisplayEl.innerHTML += `<br><a href="${wordObj.link}" target="_Blank">${wordObj.word.join('')}`;
 
   // Save the score to localStorage
   localStorage.setItem("score", JSON.stringify(score));
@@ -78,31 +78,26 @@ function startGame() {
   isStart = true;
 
   // Reset the game
-  resultDisplay.innerHTML = '';
-  wordDisplay.innerHTML = '';
-  divArr = [];
+  resultDisplayEl.innerHTML = '';
+  wordDisplayEl.innerHTML = '';
+  document.querySelector("#playAgain").textContent = "";
 
   // Return random word from the words array
   wordObj = wordObjArr[Math.floor(Math.random() * wordObjArr.length)];
-  const { word } = wordObj;
-  console.log(word);
+  console.log(wordObj.word);
+  wordObj.word = wordObj.word.split('');
 
   // Add div elements equal to the length of the chosen word to divArr
-  for (let i = 0; i < word.length; i++) {
-    const divEl = document.createElement("div");
+  wordObj.show = [];
+  wordObj.word.forEach((elm) => elm === "_" ? wordObj.show.push(" ") : wordObj.show.push("_"));
 
-    divEl.dataset.char = word[i];
-    word[i] === " " ? divEl.style.paddingRight = "15px" : divEl.textContent = "_";
-
-    divArr.push(divEl);
-  }
   // display div elements on the page
-  divArr.forEach(element => wordDisplay.appendChild(element));
-
+  wordDisplayEl.textContent = wordObj.show.join('');
+  
   // Start the timer, end game if time is 0
   getTime();
   intervalId = setInterval(function time() {
-    return totalTime === 0 ? (timeDisplay.textContent = `0 second`, endGame()) : (timeDisplay.textContent = `${totalTime--} seconds`, time);
+    return totalTime === 0 ? (timeDisplayEl.textContent = `0 second`, endGame()) : (timeDisplayEl.textContent = `${totalTime--} seconds`, time);
   }(),1000);
 }
 
@@ -130,10 +125,13 @@ document.addEventListener('keydown', (event) => {
   if (isStart) {
     // Check if the key.event is equal to the character in the div array
     // yes then set to the charcter
-    divArr.forEach(element => event.key.toLowerCase() === element.dataset.char.toLowerCase() ? element.textContent = element.dataset.char : null);
+    wordObj.word.forEach((elm, i) => event.key.toLowerCase() === elm.toLowerCase() ? wordObj.show[i] = elm : null);
+
+    // display div elements on the page
+    wordDisplayEl.textContent = wordObj.show.join('');
 
     // If there's no more element that's "hidden", end game
-    if (!divArr.some(element => element.textContent === "_")) {
+    if (!wordObj.show.includes("_")) {
       endGame(true); 
     }
 
@@ -147,12 +145,11 @@ document.addEventListener('keydown', (event) => {
 // Reset the score in localStorage and on the page
 document.querySelector("#resetBtn").addEventListener("click", () => {
   localStorage.clear();
-  winDisplay.textContent = "0";
-  loseDisplay.textContent = "0";
+  winDisplayEl.textContent = "0";
+  loseDisplayEl.textContent = "0";
 });
 
 // User select total time
 document.querySelector("#selectTime").addEventListener("change", getTime);
-
 
 init();
