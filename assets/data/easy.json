@@ -20,7 +20,7 @@
   {"word" : "IIFE", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/IIFE"},
   {"word" : "Promise","link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"},
   {"word" : "Async Function", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"},
-  { "word" : "Destructuring", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"},
+  {"word" : "Destructuring", "link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"},
   {"word" : "Hoisting", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"},
   {"word" : "Callback Hell", "link" : "http://callbackhell.com/"},
   {"word" : "Local Scope", "link" : "https://developer.mozilla.org/en-US/docs/Glossary/Local_scope"}
