@@ -1,5 +1,4 @@
 // querySelectors
-const startBtn = document.querySelector("#startBtn");
 const wordDisplayEl = document.querySelector("#wordDisplay");
 const timeDisplayEl = document.querySelector("#timeDisplay");
 const resultDisplayEl = document.querySelector("#resultDisplay");
@@ -13,10 +12,10 @@ let intervalId, wordObj, totalTime;
 let isStart = false;
 let difficulty = document.querySelector("#selectDif").value || "easy";
 
-
+//#region Function
 function init() {
   fetchWordsArr(difficulty, true);
-  displayScore();
+  renderScore();
   getTime();
 }
 
@@ -32,7 +31,7 @@ async function fetchWordsArr(str, isFirst = false) {
 }
 
 // Display score on screen
-function displayScore() {
+function renderScore() {
   winDisplayEl.textContent = score.win;
   loseDisplayEl.textContent = score.lose;
 }
@@ -66,7 +65,7 @@ function endGame(isWin = false) {
   localStorage.setItem("score", JSON.stringify(score));
 
   // Display the new score
-  displayScore();
+  renderScore();
 
   // Play again
   document.querySelector("#playAgain").textContent = "Press Enter to play again!";
@@ -100,9 +99,11 @@ function startGame() {
     return totalTime === 0 ? (timeDisplayEl.textContent = `0 second`, endGame()) : (timeDisplayEl.textContent = `${totalTime--} seconds`, time);
   }(),1000);
 }
+//#endregion Functions
 
+//#region Event Listeners
 // When clicked, start the game
-startBtn.addEventListener('click', () => {
+document.querySelector("#startBtn").addEventListener('click', () => {
   // Hide the start button 
   startBtn.classList.add("hide");
 
@@ -125,7 +126,8 @@ document.addEventListener('keydown', (event) => {
   if (isStart) {
     // Check if the key.event is equal to the character in the div array
     // yes then set to the charcter
-    wordObj.word.forEach((elm, i) => event.key.toLowerCase() === elm.toLowerCase() ? wordObj.show[i] = elm : null);
+    wordObj.word.forEach((elm, i) => event.key.toLowerCase() === elm.toLowerCase() 
+      ? wordObj.show[i] = elm : null);
 
     // display div elements on the page
     wordDisplayEl.textContent = wordObj.show.join('');
@@ -151,5 +153,7 @@ document.querySelector("#resetBtn").addEventListener("click", () => {
 
 // User select total time
 document.querySelector("#selectTime").addEventListener("change", getTime);
+
+//#endregion Event Listeners
 
 init();
